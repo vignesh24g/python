@@ -1,0 +1,171 @@
+#include<stdio.h>
+int bat(int,int,int);
+int bowl(int,int,int);
+void main()
+{
+    int i,m,n,score,opp_score,toss,score1=0,batt=0;
+    char choice;
+
+    printf("select the number of overs to be played\n");
+    scanf("%d",&n);
+    n=n*6;
+    printf("%d is the value of n\n",n);
+
+    printf("now,it's a time for toss \n put 0 for head and 1 for tail \n");
+    scanf("\n%d",&toss);
+
+    for(i=0;i<=0;i++){
+        toss=rand()%2;
+    }
+
+    if(toss==0||toss==1){
+        printf("you've won the toss\n put b for bating and f for fielding\n");
+        scanf("\n%c",&choice);
+
+            if(choice=='b'){
+
+                score= bat(n,score1,batt);
+                printf("your score is %d\n",score);
+                score1=score;
+                batt=batt+1;
+                opp_score=bowl(n,score1,batt);
+                printf("your opponent score is %d\n",opp_score);
+                    if(score>opp_score)
+                        printf("you have won the match\n");
+                    else if(score<opp_score)
+                        printf("you have lost the match\n");
+                    else if(score==opp_score)
+                        printf("the match ends in draw\n");
+                    }
+
+            else if(choice=='f'){
+                opp_score=bowl(n,score1,batt);
+                printf("your opponent score is %d\n",opp_score);
+                score1=score;
+                batt=batt+1;
+                score=bat(n,score1,batt);
+                printf("your score is %d\n",score);
+                    if(score>opp_score)
+                        printf("you have won the match\n");
+                    else if(score<opp_score)
+                        printf("you have lost the match\n");
+                    else if(score==opp_score)
+                        printf("the match ends in draw\n");
+
+        }
+    }
+    else{
+        printf("you have  lost the toss");
+            for(i=0;i<=0;i++){
+                toss=rand()%2;
+                break;
+            }
+        if(choice==0){
+            printf("opponent have elected to bat first\n");
+
+                opp_score=bowl(n,score1,batt);
+                printf("your opponent score is %d\n",opp_score);
+                score1=score;
+                batt=batt+1;
+                score=bat(n,score1,batt);
+                printf("your score is %d\n",score);
+                    if(score>opp_score)
+                        printf("you have won the match\n");
+                    else if(score<opp_score)
+                        printf("you have lost the match\n");
+                    else if(score==opp_score)
+                        printf("the match ends in draw\n");
+
+
+        }
+        else{
+            printf("  and opponent elected to bowl first\n");
+                score= bat(n,score1,batt);
+                printf("your  score is %d\n",score);
+                score1=score;
+                batt=batt+1;
+                opp_score=bowl(n,score1,batt);
+                printf("computer score is %d\n",opp_score);
+                    if(score>opp_score)
+                        printf("you have won the match\n");
+                    else if(score<opp_score)
+                        printf("you have lost the match\n");
+                    else if(score==opp_score)
+                        printf("the match ends in draw\n");
+
+
+
+        }
+        }
+}
+
+int bat(int n,int score1,int batt)
+{
+    int score=0,bowl,bating,i,res=0;
+    res++;
+    while(n!=0){
+        printf("enter a number b/w 1 to 6\n");
+        scanf("%d",&bating);
+         printf("\n\n");
+
+            bowl=rand()%6+1;
+        printf("%d is  bowled by compuer\n",bowl);
+
+        if(bating!=bowl){
+        score=score+bating;
+        printf("your score is %d\n",score);
+
+
+        if(batt==1){
+            printf("you are in second bating\n");
+            printf("%d and %d are values of your score and ur ");
+            if(score>score1){
+                printf("you are winning situation\n");
+                break;
+            }
+        }
+        n--;
+        printf("%d balls remaining\n",n);
+        continue;
+        }
+        else if(bating==bowl){
+            printf("you are out\n");
+            break;
+    }
+        printf("the score is %d\n",score);
+    }
+        return(score);
+}
+
+int bowl(int n,int score1,int batt)
+{
+    int score=0,bowl,bating,i;
+    while(n!=0){
+        printf("enter a number b/w 1 to 6\n");
+        scanf("%d",&bating);
+        printf("\n\n");
+
+            bowl=rand()%6+1;
+        printf("%d scored by computer\n",bowl);
+
+        if(bating!=bowl){
+        score=score+bowl;
+
+            if(batt==1){
+            if(score>score1)
+                break;
+        }
+
+        n--;
+        printf("%d balls remaining\n",n);
+        printf("%d is computer  score\n",score);
+        continue;
+        }
+        else if(bating==bowl){
+            printf("compuer out is out now!!\n");
+            break;
+    }
+   }
+            return(score);
+}
+
