@@ -81,3 +81,23 @@ preds = nb_classifier.predict([[1, 2, 1, 1]])
 for pred in preds:
     if(pred == 1):
         print("yes")
+        
+        
+        
+        
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+nb_classifier = NaiveBayes()
+nb_classifier.fit(X_train, y_train)
+
+preds = nb_classifier.predict(X_train)
+print("Confusion matrix: ")
+print(cm(y_train, preds))
+print("Metrics: ")
+print(cr(y_train, preds))
+print("Accuracy: ", np.sum(preds == y_train)/len(y_train))
