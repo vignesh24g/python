@@ -1,2 +1,2 @@
 # python
-my own python projects
+simple python codes
